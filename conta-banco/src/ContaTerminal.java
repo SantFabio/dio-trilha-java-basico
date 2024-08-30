@@ -1,8 +1,17 @@
 import java.util.Scanner;
 
+/**
+ * Classe principal para simular operações bancárias em um terminal.
+ */
 public class ContaTerminal {
+    /**
+     * Método principal que executa o programa.
+     *
+     * @param args Argumentos da linha de comando (não utilizados).
+     * @throws Exception Pode lançar uma exceção se houver um erro na entrada do
+     *                   usuário.
+     */
     public static void main(String[] args) throws Exception {
-
         Scanner scanner = new Scanner(System.in);
         Usuario usuario = new Usuario();
         int escolha = 0;
@@ -22,6 +31,8 @@ public class ContaTerminal {
                 --------------------------------------
                     """;
 
+        // Loop para exibir o menu e processar as operações até que o usuário escolha
+        // sair.
         while (!logOut) {
             System.out.println(menu);
             if (scanner.hasNextInt()) {
@@ -54,6 +65,12 @@ public class ContaTerminal {
         scanner.close();
     }
 
+    /**
+     * Cria uma conta para o usuário, pedindo o nome e o saldo inicial.
+     *
+     * @param usuario O objeto Usuario que será configurado.
+     * @param scanner O Scanner para leitura de entradas do usuário.
+     */
     private static void criarConta(Usuario usuario, Scanner scanner) {
         if (usuario.getNome() == null) {
             System.out.println("Nome:");
@@ -75,6 +92,11 @@ public class ContaTerminal {
         }
     }
 
+    /**
+     * Consulta e exibe o saldo atual do usuário.
+     *
+     * @param usuario O objeto Usuario cujos saldos serão consultados.
+     */
     public static void consultarSaldos(Usuario usuario) {
         if (usuario.getNome() != null) {
             System.out.println("Saldo atual: " + usuario.getSaldo());
@@ -83,6 +105,12 @@ public class ContaTerminal {
         }
     }
 
+    /**
+     * Permite ao usuário depositar um valor em sua conta.
+     *
+     * @param usuario O objeto Usuario onde o valor será depositado.
+     * @param scanner O Scanner para leitura de entradas do usuário.
+     */
     public static void depositar(Usuario usuario, Scanner scanner) {
         if (usuario.getNome() != null) {
             System.out.println("Digite o valor que deseja adicionar:");
@@ -95,6 +123,12 @@ public class ContaTerminal {
         }
     }
 
+    /**
+     * Permite ao usuário sacar um valor de sua conta.
+     *
+     * @param usuario O objeto Usuario de onde o valor será sacado.
+     * @param scanner O Scanner para leitura de entradas do usuário.
+     */
     public static void sacar(Usuario usuario, Scanner scanner) {
         if (usuario.getNome() != null) {
             System.out.println("Digite o valor que deseja sacar:");
